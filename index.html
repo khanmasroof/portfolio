@@ -1,159 +1,475 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khan Masroof | Full Stack WordPress & Automation Expert</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #2dd4bf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, Linkedin, MapPin, Code, Briefcase, GraduationCap, Award, Target, Zap, Globe, Server, Database, Palette, ChevronUp } from 'lucide-react';
+
+export default function Portfolio() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const skills = {
+    frontend: ['HTML5', 'CSS3', 'JavaScript', 'React JS', 'Responsive Design', 'UI/UX Implementation'],
+    backend: ['PHP', 'WordPress', 'MySQL', 'API Integration', 'Custom Plugins', 'Theme Development'],
+    automation: ['Zapier', 'N8N', 'Make (Integromat)', 'Pabbly Connect', 'WATI', 'Interakt', '2Chats'],
+    tools: ['Web Analytics', 'Git', 'Web Servers', 'XML Web Services', 'Performance Testing', 'SEO Optimization']
+  };
+
+  const experience = [
+    {
+      title: 'Full Stack WordPress Developer',
+      company: 'K21 Academy',
+      location: 'London (Remote)',
+      period: '05/2022 - Present',
+      responsibilities: [
+        'Designed and developed customized website presentations to achieve optimized business goals',
+        'Led web page design, content writing, and production to meet project requirements',
+        'Integrated third-party forms, databases, and back-end services',
+        'Developed custom code, plugins, and extensions for enhanced performance',
+        'Zapier expert specializing in custom automations for forms, CRMs, and multi-app workflows',
+        'Implemented WhatsApp automation solutions using WATI, Interakt, and 2Chats',
+        'Built end-to-end automation pipelines connecting websites, CRMs, and payment gateways',
+        'Conducted website performance testing, troubleshooting, and optimization'
+      ]
+    },
+    {
+      title: 'Web Developer',
+      company: 'Bit by Bits',
+      location: 'Srinagar, Jammu and Kashmir',
+      period: '2020 - 2022',
+      responsibilities: [
+        'Built responsive layouts using HTML5 and CSS3',
+        'Designed visual and graphic assets optimized for multiple platforms',
+        'Collaborated with clients to understand requirements and deliver custom solutions'
+      ]
+    }
+  ];
+
+  const education = [
+    {
+      degree: 'Master of Computer Application (MCA)',
+      field: 'Computer Science And Programming',
+      institution: 'Cluster University Srinagar',
+      year: '2020 - 2023'
+    },
+    {
+      degree: 'Bachelor of Computer Application (BCA)',
+      field: 'Mathematics And Computer Science',
+      institution: 'Amar Singh College, Cluster University Srinagar',
+      year: '2017 - 2020'
+    },
+    {
+      degree: 'Associate of Science',
+      field: 'Engineering Physics, Chemistry, Mathematics',
+      institution: 'Boys Higher Secondary, Srinagar',
+      year: '2015 - 2017'
+    }
+  ];
+
+  const achievements = [
+    'Microsoft AI: Artificial Intelligence Solutions License - 2019',
+    'Complete HTML, CSS, and JavaScript by SoloLearn',
+    'The Complete Web Developer in 2023: Zero to Mastery on Udemy'
+  ];
+
+  const services = [
+    {
+      icon: <Code size={40} />,
+      title: 'Custom WordPress Development',
+      description: 'Build tailored WordPress solutions with custom themes, plugins, and functionalities to match your unique business requirements.'
+    },
+    {
+      icon: <Zap size={40} />,
+      title: 'Automation & Integration',
+      description: 'Streamline workflows with Zapier, N8N, and Make. Connect your tools, automate processes, and boost productivity.'
+    },
+    {
+      icon: <Globe size={40} />,
+      title: 'WhatsApp Business Solutions',
+      description: 'Implement automated WhatsApp messaging systems using WATI, Interakt, and 2Chats for enhanced customer engagement.'
+    },
+    {
+      icon: <Server size={40} />,
+      title: 'API Integration',
+      description: 'Seamlessly integrate third-party services, payment gateways, CRMs, and marketing platforms into your web applications.'
+    },
+    {
+      icon: <Database size={40} />,
+      title: 'Database Management',
+      description: 'Design and optimize database structures for efficient data storage, retrieval, and management.'
+    },
+    {
+      icon: <Palette size={40} />,
+      title: 'Responsive Web Design',
+      description: 'Create beautiful, mobile-friendly websites that provide excellent user experiences across all devices.'
+    }
+  ];
+
+  const stats = [
+    { number: '3+', label: 'Years Experience' },
+    { number: '50+', label: 'Projects Completed' },
+    { number: '100%', label: 'Client Satisfaction' },
+    { number: '24/7', label: 'Support Available' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-6xl font-bold shadow-2xl animate-fadeIn">
+            KM
+          </div>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 animate-slideUp">
+            Khan Masroof
+          </h1>
+          <h2 className="text-3xl md:text-4xl text-purple-300 mb-8 animate-slideUp delay-200">
+            Software Developer
+          </h2>
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 animate-slideUp delay-300">
+            Full Stack WordPress Developer & Automation Specialist
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-6 text-gray-300 mb-12 animate-slideUp delay-400">
+            <a href="tel:+919149605834" className="flex items-center gap-2 hover:text-purple-400 transition-colors bg-slate-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
+              <Phone size={18} />
+              <span>+91-9149605834</span>
+            </a>
+            <a href="mailto:khanmasroof33@gmail.com" className="flex items-center gap-2 hover:text-purple-400 transition-colors bg-slate-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
+              <Mail size={18} />
+              <span>khanmasroof33@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/khanmasroof/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-purple-400 transition-colors bg-slate-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
+              <Linkedin size={18} />
+              <span>LinkedIn</span>
+            </a>
+            <div className="flex items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
+              <MapPin size={18} />
+              <span>Srinagar, J&K</span>
+            </div>
+          </div>
+
+          <div className="flex justify-center gap-4 animate-slideUp delay-500">
+            <a href="#contact" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all">
+              Get In Touch
+            </a>
+            <a href="#services" className="border-2 border-purple-500 text-purple-400 px-8 py-3 rounded-full font-semibold hover:bg-purple-500/10 transition-all">
+              View Services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4 bg-slate-800/30 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-12 text-center">
+            About Me
+          </h2>
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-purple-500/20 p-8 shadow-2xl">
+            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              Experienced WordPress Developer with over 3 years of expertise in customizing online presence through impressive layouts that enhance campaign reach. Skilled in managing data presentation and back-end services for unique WordPress themes. Key player in overseeing analytics, web traffic, and campaign tracking to optimize organizational impact. Detail-oriented in planning QA measures, API integration, and deliverable launches.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20">
+                <h4 className="text-xl font-semibold text-purple-300 mb-3 flex items-center gap-2">
+                  <Target size={24} />
+                  Core Expertise
+                </h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• WordPress Custom Development</li>
+                  <li>• Theme & Plugin Customization</li>
+                  <li>• Responsive Web Design</li>
+                  <li>• Performance Optimization</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20">
+                <h4 className="text-xl font-semibold text-purple-300 mb-3 flex items-center gap-2">
+                  <Zap size={24} />
+                  Automation Specialization
+                </h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>• Zapier & Make Integration</li>
+                  <li>• CRM & Multi-App Workflows</li>
+                  <li>• WhatsApp Business Solutions</li>
+                  <li>• End-to-End Pipeline Development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-4 text-center">
+            Services I Offer
+          </h2>
+          <p className="text-gray-400 text-center mb-12 text-lg">
+            Comprehensive web development and automation solutions tailored to your needs
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div 
+                key={index} 
+                className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-purple-500/20 p-6 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 group"
+              >
+                <div className="text-purple-400 mb-4 group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-gray-400">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-12 text-center">
+            Work Experience
+          </h2>
+          <div className="space-y-12">
+            {experience.map((job, index) => (
+              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-purple-500/20 p-8 shadow-2xl hover:border-purple-500/40 transition-all">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                  <div>
+                    <h3 className="text-3xl font-semibold text-purple-300 mb-2">{job.title}</h3>
+                    <p className="text-xl text-gray-300 font-medium">{job.company}</p>
+                  </div>
+                  <div className="text-gray-400 mt-2 md:mt-0 md:text-right">
+                    <p>{job.location}</p>
+                    <p className="text-purple-400 font-medium">{job.period}</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 text-gray-300">
+                  {job.responsibilities.map((resp, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="text-purple-400 mt-1">▹</span>
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-4 text-center">
+            Technical Skills
+          </h2>
+          <p className="text-gray-400 text-center mb-12 text-lg">
+            A comprehensive toolkit for modern web development
+          </p>
+          <div className="space-y-8">
+            {Object.entries(skills).map(([category, items], index) => (
+              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-purple-500/20 p-8">
+                <h3 className="text-2xl font-semibold text-purple-300 mb-6 capitalize">
+                  {category.replace(/([A-Z])/g, ' $1').trim()}
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {items.map((skill, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg p-4 text-center hover:scale-105 transition-transform hover:border-purple-500/50"
+                    >
+                      <span className="text-white font-medium">{skill}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-12 text-center">
+            Education
+          </h2>
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-purple-500/20 p-8 hover:border-purple-500/40 transition-all shadow-xl">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold text-purple-300 mb-2">{edu.degree}</h3>
+                    <p className="text-lg text-gray-300 mb-2">{edu.field}</p>
+                    <p className="text-gray-400">{edu.institution}</p>
+                  </div>
+                  <div className="text-purple-400 font-medium mt-2 md:mt-0 md:text-right">
+                    {edu.year}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section id="achievements" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold text-white mb-12 text-center">
+            Achievements & Certifications
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6 flex items-start gap-4 hover:border-purple-500/40 transition-all hover:transform hover:scale-105 shadow-xl"
+              >
+                <Award className="text-purple-400 flex-shrink-0 mt-1" size={28} />
+                <p className="text-gray-300 text-lg">{achievement}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl font-bold text-white mb-6">
+            Let's Work Together
+          </h2>
+          <p className="text-xl text-gray-300 mb-12">
+            Have a project in mind? Let's discuss how I can help bring your ideas to life.
+          </p>
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-purple-500/20 p-12 shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <a href="tel:+919149605834" className="flex flex-col items-center gap-3 p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20 hover:border-purple-500/40 transition-all group">
+                <Phone size={32} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                <span className="text-white font-medium">+91-9149605834</span>
+              </a>
+              <a href="mailto:khanmasroof33@gmail.com" className="flex flex-col items-center gap-3 p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20 hover:border-purple-500/40 transition-all group">
+                <Mail size={32} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                <span className="text-white font-medium">khanmasroof33@gmail.com</span>
+              </a>
+            </div>
+            <a 
+              href="https://www.linkedin.com/in/khanmasroof/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all"
+            >
+              <Linkedin size={24} />
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 bg-slate-900/80 backdrop-blur-sm border-t border-purple-500/20">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-gray-400">
+            © 2024 Khan Masroof. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-sm mt-2">
+            Built with React & Tailwind CSS
+          </p>
+        </div>
+      </footer>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform z-50"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={24} />
+        </button>
+      )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans">
-
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <span class="text-xl font-bold tracking-tight">KHAN <span class="text-blue-600">MASROOF</span></span>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#about" class="hover:text-blue-600 transition">About</a>
-                <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
-                <a href="#automation" class="hover:text-blue-600 transition">Automation</a>
-                <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">Hire Me</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="py-20 px-4 max-w-6xl mx-auto text-center">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6">Building <span class="gradient-text">Scalable WordPress</span> Ecosystems.</h1>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Full Stack Developer specializing in high-performance WordPress themes and advanced workflow automation using Zapier, n8n, and Make.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="mailto:khanmasroof33@gmail.com" class="px-8 py-3 bg-slate-900 text-white rounded-lg font-semibold hover:bg-slate-800 transition">Get In Touch</a>
-            <a href="https://www.linkedin.com/in/khanmasroof/" target="_blank" class="px-8 py-3 border border-slate-300 rounded-lg font-semibold hover:bg-slate-100 transition">LinkedIn Profile</a>
-        </div>
-    </header>
-
-    <section id="skills" class="py-16 bg-white border-y border-slate-200">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div><p class="font-bold text-2xl">3+ Years</p><p class="text-slate-500">Experience</p></div>
-                <div><p class="font-bold text-2xl">Expert</p><p class="text-slate-500">WordPress & PHP</p></div>
-                <div><p class="font-bold text-2xl">Certified</p><p class="text-slate-500">MS AI Solutions</p></div>
-                <div><p class="font-bold text-2xl">Automation</p><p class="text-slate-500">n8n / Zapier / Make</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-20 px-4 max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 flex items-center"><i class="fas fa-briefcase mr-4 text-blue-600"></i> Professional Experience</h2>
-        
-        <div class="space-y-12">
-            <div class="relative pl-8 border-l-2 border-slate-200">
-                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-600 rounded-full"></div>
-                <div class="flex flex-wrap justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold">Full Stack WordPress Developer</h3>
-                        <p class="text-blue-600 font-medium">K21 Academy (London - Remote)</p>
-                    </div>
-                    <span class="text-sm bg-slate-100 px-3 py-1 rounded text-slate-500">05/2022 - Present</span>
-                </div>
-                <ul class="text-slate-600 space-y-2 list-disc ml-4">
-                    <li>Led the design and production of web pages to meet complex project requirements.</li>
-                    <li>Integrated third-party forms, databases, and back-end services for custom theme functionality.</li>
-                    <li>Developed custom plugins and extensions to enhance website scalability and performance.</li>
-                    <li>Redesigned navigation and UI/UX to significantly improve user engagement.</li>
-                </ul>
-            </div>
-
-            <div class="relative pl-8 border-l-2 border-slate-200">
-                <div class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full"></div>
-                <div class="flex flex-wrap justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold">Web Developer</h3>
-                        <p class="text-blue-600 font-medium">Bit by Bits (Srinagar)</p>
-                    </div>
-                    <span class="text-sm bg-slate-100 px-3 py-1 rounded text-slate-500">2020 - 2022</span>
-                </div>
-                <ul class="text-slate-600 space-y-2 list-disc ml-4">
-                    <li>Built responsive layouts using HTML5 and CSS3 according to specific client needs.</li>
-                    <li>Optimized visual and graphic assets for cross-device compatibility.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="automation" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6">Automation & Integration Mastery</h2>
-            <p class="text-slate-400 mb-12 max-w-2xl">I specialize in connecting WordPress to the world. From CRMs to WhatsApp bots, I automate the manual work away.</p>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
-                    <i class="fas fa-bolt text-yellow-400 text-2xl mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">Workflow Automation</h4>
-                    <p class="text-slate-400 text-sm">Expert in Zapier, Make (Integromat), and n8n for multi-app synchronization.</p>
-                </div>
-                <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
-                    <i class="fab fa-whatsapp text-green-400 text-2xl mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">WhatsApp Solutions</h4>
-                    <p class="text-slate-400 text-sm">Implementing WATI, Interakt, and 2Chats for automated customer engagement.</p>
-                </div>
-                <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
-                    <i class="fas fa-database text-blue-400 text-2xl mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">CRM & Lead Gen</h4>
-                    <p class="text-slate-400 text-sm">End-to-end pipelines connecting websites, payment gateways, and marketing tools.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Education</h2>
-            <div class="space-y-6">
-                <div>
-                    <h4 class="font-bold italic">Master of Computer Application (MCA)</h4>
-                    <p class="text-slate-600">Cluster University Srinagar | 2020 - 2023</p>
-                </div>
-                <div>
-                    <h4 class="font-bold italic">Bachelor of Computer Application (BCA)</h4>
-                    <p class="text-slate-600">Amar Singh College | 2017 - 2020</p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h2 class="text-3xl font-bold mb-8">Technical Skills</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">WordPress</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">PHP</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">JavaScript</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">React JS</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">Zapier</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">n8n</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">HTML/CSS</span>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-medium">Web Analytics</span>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="bg-white border-t border-slate-200 py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
-            <p class="text-slate-500 mb-8">Currently available for WordPress development and Automation projects.</p>
-            <div class="flex justify-center space-x-6 text-2xl text-slate-400">
-                <a href="https://www.linkedin.com/in/khanmasroof/" class="hover:text-blue-600"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:khanmasroof33@gmail.com" class="hover:text-red-500"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+919149605834" class="hover:text-green-500"><i class="fas fa-phone"></i></a>
-            </div>
-            <p class="mt-8 text-sm text-slate-400">© 2024 Khan Masroof. Bemina, Srinagar.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 1s ease-out;
+        }
+        .animate-slideUp {
+          animation: slideUp 0.8s ease-out;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+        .delay-300 {
+          animation-delay: 0.3s;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+        .delay-400 {
+          animation-delay: 0.4s;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+        .delay-500 {
+          animation-delay: 0.5s;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+        .delay-700 {
+          animation-delay: 0.7s;
+        }
+      `}</style>
+    </div>
+  );
+}
