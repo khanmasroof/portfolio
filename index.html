@@ -13,6 +13,10 @@
 body { font-family: 'Plus Jakarta Sans', sans-serif; }
 .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); }
 .blob { filter: blur(40px); position: absolute; z-index: -1; }
+.stat-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(99,102,241,0.15); }
+.tool-tag { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(99,102,241,0.1); color: #4f46e5; margin: 3px; }
+.tool-tag-dark { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.1); color: #c7d2fe; margin: 3px; }
 </style>
 </head>
 
@@ -21,16 +25,18 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 <!-- NAV -->
 <nav class="fixed w-full z-50 glass border-b border-slate-200">
 <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-<div class="flex items-center gap-2">
-<div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">KM</div>
-<span class="font-extrabold text-xl hidden sm:block">KHAN <span class="text-indigo-600">MASROOF</span></span>
-</div>
-<div class="hidden md:flex gap-8 text-sm font-semibold uppercase">
-<a href="#services">Services</a>
-<a href="#wordpress">WordPress</a>
-<a href="#automation">Automation</a>
-<a href="#experience">Experience</a>
-</div>
+  <div class="flex items-center gap-2">
+    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">KM</div>
+    <span class="font-extrabold text-xl hidden sm:block">KHAN <span class="text-indigo-600">MASROOF</span></span>
+  </div>
+  <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wide">
+    <a href="#services" class="hover:text-indigo-600 transition">Services</a>
+    <a href="#wordpress" class="hover:text-indigo-600 transition">WordPress</a>
+    <a href="#automation" class="hover:text-indigo-600 transition">Automation</a>
+    <a href="#crm" class="hover:text-indigo-600 transition">CRM</a>
+    <a href="#experience" class="hover:text-indigo-600 transition">Experience</a>
+  </div>
+  <a href="mailto:khanmasroof33@gmail.com" class="hidden md:block px-5 py-2 bg-indigo-600 text-white rounded-xl font-bold text-sm hover:bg-indigo-700 transition">Hire Me</a>
 </div>
 </nav>
 
@@ -40,196 +46,281 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; }
 <div class="blob w-96 h-96 bg-blue-200 bottom-0 -right-20"></div>
 
 <div class="max-w-6xl mx-auto text-center">
-<h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
-WordPress systems that <span class="text-indigo-600">automate business.</span>
-</h1>
-<p class="text-lg text-slate-600 max-w-3xl mx-auto mb-12">
-MCA-qualified Full Stack WordPress Developer & Automation Architect.
-I build websites that integrate, sync, validate, route, and scale.
-</p>
-<div class="flex justify-center gap-4 flex-wrap">
-<a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg hover:scale-105 transition">
-Start a Project
-</a>
-<a href="#automation" class="px-8 py-4 bg-white border rounded-2xl font-bold">
-View Automations
-</a>
-</div>
+  <div class="inline-block px-4 py-2 bg-indigo-50 border border-indigo-200 rounded-full text-indigo-700 text-sm font-semibold mb-8">
+    MCA-Qualified · 3+ Years · Remote-Ready
+  </div>
+  <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight">
+    WordPress systems that <span class="text-indigo-600">automate business.</span>
+  </h1>
+  <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-12">
+    Full Stack WordPress Developer & Automation Architect. I build websites that integrate, sync, validate, route, and scale — powered by AI-enhanced automation pipelines.
+  </p>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-14">
+    <div class="stat-card bg-white border rounded-2xl p-5">
+      <div class="text-3xl font-extrabold text-indigo-600">800+</div>
+      <div class="text-xs text-slate-500 mt-1 font-semibold">Zapier Integrations</div>
+    </div>
+    <div class="stat-card bg-white border rounded-2xl p-5">
+      <div class="text-3xl font-extrabold text-emerald-600">200+</div>
+      <div class="text-xs text-slate-500 mt-1 font-semibold">Make Scenarios</div>
+    </div>
+    <div class="stat-card bg-white border rounded-2xl p-5">
+      <div class="text-3xl font-extrabold text-purple-600">150+</div>
+      <div class="text-xs text-slate-500 mt-1 font-semibold">n8n Workflows</div>
+    </div>
+    <div class="stat-card bg-white border rounded-2xl p-5">
+      <div class="text-3xl font-extrabold text-orange-500">5+</div>
+      <div class="text-xs text-slate-500 mt-1 font-semibold">CRMs Integrated</div>
+    </div>
+  </div>
+
+  <div class="flex justify-center gap-4 flex-wrap">
+    <a href="#contact" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg hover:scale-105 transition">
+      Start a Project
+    </a>
+    <a href="#automation" class="px-8 py-4 bg-white border rounded-2xl font-bold hover:border-indigo-400 transition">
+      View Automations
+    </a>
+  </div>
 </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="py-24 px-6 max-w-6xl mx-auto">
 <div class="text-center mb-16">
-<h2 class="text-3xl font-extrabold mb-4">Core Services</h2>
-<p class="text-slate-500">Systems, integrations, and automation-first development.</p>
+  <h2 class="text-3xl font-extrabold mb-4">Core Services</h2>
+  <p class="text-slate-500">Systems, integrations, and automation-first development.</p>
 </div>
 
 <div class="grid md:grid-cols-3 gap-8">
-<div class="p-8 bg-white rounded-3xl border hover:shadow-xl">
-<i class="fab fa-wordpress text-3xl text-indigo-600 mb-6"></i>
-<h3 class="font-bold text-xl mb-3">Advanced WordPress</h3>
-<p class="text-slate-500 text-sm">
-Custom themes, plugins, REST APIs, WooCommerce logic, performance, and security.
-</p>
-</div>
+  <div class="p-8 bg-white rounded-3xl border hover:shadow-xl transition">
+    <i class="fab fa-wordpress text-3xl text-indigo-600 mb-6"></i>
+    <h3 class="font-bold text-xl mb-3">Advanced WordPress</h3>
+    <p class="text-slate-500 text-sm mb-4">Custom themes, plugins, REST APIs, WooCommerce logic, performance, and security.</p>
+    <div>
+      <span class="tool-tag">Elementor</span><span class="tool-tag">Divi</span><span class="tool-tag">WPBakery</span>
+      <span class="tool-tag">ACF</span><span class="tool-tag">WooCommerce</span>
+    </div>
+  </div>
 
-<div class="p-8 bg-white rounded-3xl border hover:shadow-xl">
-<i class="fas fa-code-branch text-3xl text-emerald-600 mb-6"></i>
-<h3 class="font-bold text-xl mb-3">Workflow Automation</h3>
-<p class="text-slate-500 text-sm">
-Zapier, n8n & Make automations connecting websites, CRMs, WhatsApp & dashboards.
-</p>
-</div>
+  <div class="p-8 bg-white rounded-3xl border hover:shadow-xl transition">
+    <i class="fas fa-code-branch text-3xl text-emerald-600 mb-6"></i>
+    <h3 class="font-bold text-xl mb-3">Workflow Automation</h3>
+    <p class="text-slate-500 text-sm mb-4">Zapier, n8n & Make automations with custom JS, Python, and AI-powered steps connecting websites, CRMs, WhatsApp & dashboards.</p>
+    <div>
+      <span class="tool-tag">Zapier</span><span class="tool-tag">Make</span><span class="tool-tag">n8n</span>
+      <span class="tool-tag">Pabbly</span><span class="tool-tag">AI Nodes</span>
+    </div>
+  </div>
 
-<div class="p-8 bg-white rounded-3xl border hover:shadow-xl">
-<i class="fab fa-whatsapp text-3xl text-purple-600 mb-6"></i>
-<h3 class="font-bold text-xl mb-3">WhatsApp Systems</h3>
-<p class="text-slate-500 text-sm">
-WATI & Interakt integrations for lead routing, qualification & instant response.
-</p>
-</div>
+  <div class="p-8 bg-white rounded-3xl border hover:shadow-xl transition">
+    <i class="fab fa-whatsapp text-3xl text-purple-600 mb-6"></i>
+    <h3 class="font-bold text-xl mb-3">WhatsApp Systems</h3>
+    <p class="text-slate-500 text-sm mb-4">WATI & Interakt integrations for lead routing, qualification & instant response systems.</p>
+    <div>
+      <span class="tool-tag">WATI</span><span class="tool-tag">Interakt</span><span class="tool-tag">2Chats</span>
+    </div>
+  </div>
 </div>
 </section>
 
 <!-- WORDPRESS ENGINEERING -->
 <section id="wordpress" class="py-24 bg-white px-6">
 <div class="max-w-6xl mx-auto">
-<h2 class="text-3xl font-extrabold mb-16 text-center">WordPress Engineering Depth</h2>
+  <h2 class="text-3xl font-extrabold mb-4 text-center">WordPress Engineering Depth</h2>
+  <p class="text-slate-500 text-center mb-16">Full-stack WordPress expertise across the entire ecosystem.</p>
 
-<div class="grid md:grid-cols-3 gap-8">
-<div class="p-8 border rounded-3xl">
-<h3 class="font-bold text-xl mb-4">Custom Plugin Architecture</h3>
-<p class="text-sm text-slate-500">
-Business-logic plugins, background cron jobs, validation layers,
-secure API handlers, modular architecture.
-</p>
-</div>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">Custom Plugin Architecture</h3>
+      <p class="text-sm text-slate-500 mb-4">Business-logic plugins, background cron jobs, validation layers, secure API handlers, modular architecture.</p>
+    </div>
 
-<div class="p-8 border rounded-3xl">
-<h3 class="font-bold text-xl mb-4">Forms & Data Pipelines</h3>
-<p class="text-sm text-slate-500">
-Multi-step forms, conditional logic, UTM capture,
-spam protection, webhook dispatching.
-</p>
-</div>
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">Page Builders</h3>
+      <p class="text-sm text-slate-500 mb-4">Expert-level builds with Elementor, Divi, WPBakery (Visual Composer), and Beaver Builder — conversion-focused and fully responsive.</p>
+    </div>
 
-<div class="p-8 border rounded-3xl">
-<h3 class="font-bold text-xl mb-4">WooCommerce Custom Logic</h3>
-<p class="text-sm text-slate-500">
-Checkout customization, pricing rules, order automation,
-CRM sync & post-purchase flows.
-</p>
-</div>
-</div>
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">WooCommerce & ACF</h3>
+      <p class="text-sm text-slate-500 mb-4">Checkout customization, pricing rules, order automation, CRM sync, post-purchase flows. ACF field groups, flexible content, repeater fields.</p>
+    </div>
+
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">Forms & Data Pipelines</h3>
+      <p class="text-sm text-slate-500 mb-4">Multi-step forms with conditional logic, UTM capture, spam protection, and webhook dispatching.</p>
+      <div>
+        <span class="tool-tag">Gravity Forms</span><span class="tool-tag">Fluent Forms</span><span class="tool-tag">WPForms</span>
+        <span class="tool-tag">Typeform</span><span class="tool-tag">JotForm</span><span class="tool-tag">CF7</span>
+      </div>
+    </div>
+
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">Membership & Community</h3>
+      <p class="text-sm text-slate-500 mb-4">WPFusion and Skool integrations for membership access control, CRM-to-course sync, and automated student lifecycle management.</p>
+      <div>
+        <span class="tool-tag">WPFusion</span><span class="tool-tag">Skool</span>
+      </div>
+    </div>
+
+    <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-4">Chrome Extensions</h3>
+      <p class="text-sm text-slate-500 mb-4">Built internal extensions for QA testing, form data extraction, CRM validation, automation monitoring, and API debugging.</p>
+    </div>
+  </div>
 </div>
 </section>
 
 <!-- AUTOMATION PLATFORMS -->
 <section id="automation" class="py-24 bg-slate-900 text-white px-6">
 <div class="max-w-6xl mx-auto">
-<h2 class="text-3xl font-extrabold mb-16 text-center">Automation Platforms I Engineer With</h2>
+  <h2 class="text-3xl font-extrabold mb-4 text-center">Automation Platforms I Engineer With</h2>
+  <p class="text-slate-400 text-center mb-16">Custom JS & Python code steps · AI-powered nodes · Webhook security</p>
 
-<div class="grid md:grid-cols-3 gap-10 text-slate-300">
-<div>
-<h3 class="font-bold text-xl text-white mb-3">Zapier</h3>
-<p class="text-sm">
-Triggers, multi-step Zaps, filters, paths, webhooks,
-custom API calls, error handling.
-</p>
-</div>
+  <div class="grid md:grid-cols-3 gap-10 mb-16">
+    <div class="p-8 border border-slate-700 rounded-3xl">
+      <div class="text-4xl font-extrabold text-indigo-400 mb-2">800+</div>
+      <h3 class="font-bold text-xl text-white mb-3">Zapier</h3>
+      <p class="text-sm text-slate-400 mb-4">Triggers, multi-step Zaps, filters, paths, webhooks, custom API calls, JS & Python code steps, AI-powered routing and lead scoring.</p>
+      <div>
+        <span class="tool-tag-dark">Multi-step Zaps</span><span class="tool-tag-dark">Custom Code</span>
+        <span class="tool-tag-dark">AI Nodes</span><span class="tool-tag-dark">Error Handling</span>
+      </div>
+    </div>
 
-<div>
-<h3 class="font-bold text-xl text-white mb-3">n8n (Self-Hosted)</h3>
-<p class="text-sm">
-Complex branching logic, retries, queues,
-custom JS functions, database writes.
-</p>
-</div>
+    <div class="p-8 border border-slate-700 rounded-3xl">
+      <div class="text-4xl font-extrabold text-purple-400 mb-2">150+</div>
+      <h3 class="font-bold text-xl text-white mb-3">n8n (Self-Hosted)</h3>
+      <p class="text-sm text-slate-400 mb-4">Complex branching logic, retries, queues, custom JS functions, database writes, webhook triggers, and AI-integrated nodes.</p>
+      <div>
+        <span class="tool-tag-dark">Self-Hosted</span><span class="tool-tag-dark">Custom JS</span>
+        <span class="tool-tag-dark">DB Writes</span><span class="tool-tag-dark">AI Integration</span>
+      </div>
+    </div>
 
-<div>
-<h3 class="font-bold text-xl text-white mb-3">Make (Integromat)</h3>
-<p class="text-sm">
-Scenario orchestration, data mapping,
-rate-limit handling, modular automations.
-</p>
-</div>
-</div>
+    <div class="p-8 border border-slate-700 rounded-3xl">
+      <div class="text-4xl font-extrabold text-emerald-400 mb-2">200+</div>
+      <h3 class="font-bold text-xl text-white mb-3">Make (Integromat)</h3>
+      <p class="text-sm text-slate-400 mb-4">Scenario orchestration, data mapping, rate-limit handling, modular automations, AI modules for content generation and classification.</p>
+      <div>
+        <span class="tool-tag-dark">Orchestration</span><span class="tool-tag-dark">Data Mapping</span>
+        <span class="tool-tag-dark">Rate Limiting</span><span class="tool-tag-dark">AI Modules</span>
+      </div>
+    </div>
+  </div>
 
-<div class="mt-16 space-y-4 text-slate-400 text-sm">
-<p>✔ WordPress → CRM → WhatsApp → Email → Dashboard</p>
-<p>✔ Webhooks secured with tokens & validation</p>
-<p>✔ Lead scoring, routing & automation logic</p>
-<p>✔ Zero-manual-entry data systems</p>
-</div>
+  <div class="grid md:grid-cols-2 gap-4 text-slate-400 text-sm max-w-2xl mx-auto">
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> WordPress → CRM → WhatsApp → Email → Dashboard</p>
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> Webhooks secured with tokens & validation</p>
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> AI-powered lead scoring, routing & enrichment</p>
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> Zero-manual-entry data systems</p>
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> Custom JS & Python code steps</p>
+    <p class="flex items-center gap-2"><span class="text-indigo-400">✔</span> OpenAI & Claude AI integration</p>
+  </div>
 </div>
 </section>
 
-<!-- CHROME EXTENSIONS -->
-<section class="py-24 px-6 max-w-5xl mx-auto">
-<h2 class="text-3xl font-extrabold mb-16 text-center">Chrome Extensions (Dev & Ops)</h2>
+<!-- CRM & EMAIL -->
+<section id="crm" class="py-24 px-6 bg-white">
+<div class="max-w-6xl mx-auto">
+  <h2 class="text-3xl font-extrabold mb-4 text-center">CRM & Email Marketing</h2>
+  <p class="text-slate-500 text-center mb-16">5+ CRM platforms integrated — lead capture, tagging, segmentation & automated sequences.</p>
 
-<div class="grid md:grid-cols-2 gap-8">
-<div class="p-8 bg-white border rounded-3xl">
-<h3 class="font-bold text-xl mb-3">Internal Chrome Extensions</h3>
-<p class="text-slate-500 text-sm">
-Built extensions for QA testing, form data extraction,
-CRM validation, and internal workflow shortcuts.
-</p>
-</div>
-
-<div class="p-8 bg-white border rounded-3xl">
-<h3 class="font-bold text-xl mb-3">Automation Support Tools</h3>
-<p class="text-slate-500 text-sm">
-Used extensions for API debugging, cookie/session analysis,
-automation monitoring & performance audits.
-</p>
-</div>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+    <div class="p-6 border rounded-2xl text-center hover:shadow-lg transition">
+      <div class="font-bold text-lg mb-1">GoHighLevel</div>
+      <div class="text-xs text-slate-400">Full pipeline automation</div>
+    </div>
+    <div class="p-6 border rounded-2xl text-center hover:shadow-lg transition">
+      <div class="font-bold text-lg mb-1">ActiveCampaign</div>
+      <div class="text-xs text-slate-400">Email sequences & CRM</div>
+    </div>
+    <div class="p-6 border rounded-2xl text-center hover:shadow-lg transition">
+      <div class="font-bold text-lg mb-1">Mailchimp</div>
+      <div class="text-xs text-slate-400">Campaigns & automation</div>
+    </div>
+    <div class="p-6 border rounded-2xl text-center hover:shadow-lg transition">
+      <div class="font-bold text-lg mb-1">Infusionsoft</div>
+      <div class="text-xs text-slate-400">Keap CRM & sequences</div>
+    </div>
+    <div class="p-6 border rounded-2xl text-center hover:shadow-lg transition">
+      <div class="font-bold text-lg mb-1">LeadSquared</div>
+      <div class="text-xs text-slate-400">Lead routing & scoring</div>
+    </div>
+  </div>
 </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="py-24 bg-slate-900 text-white px-6">
 <div class="max-w-4xl mx-auto">
-<h2 class="text-3xl font-extrabold mb-16 text-center">Professional Experience</h2>
+  <h2 class="text-3xl font-extrabold mb-16 text-center">Professional Experience</h2>
 
-<div class="space-y-12">
-<div>
-<p class="text-indigo-400 text-sm font-bold">2022 — PRESENT</p>
-<h3 class="text-xl font-bold">K21 Academy (Remote)</h3>
-<ul class="mt-4 space-y-3 text-slate-300 text-sm">
-<li>✔ Built scalable WordPress systems handling high traffic</li>
-<li>✔ Engineered automation pipelines across marketing & sales</li>
-<li>✔ Integrated CRM, WhatsApp & analytics tools</li>
-</ul>
-</div>
+  <div class="space-y-12">
+    <div class="p-8 border border-slate-700 rounded-3xl">
+      <p class="text-indigo-400 text-sm font-bold mb-1">MAY 2022 — PRESENT · LONDON, UK (REMOTE)</p>
+      <h3 class="text-2xl font-bold mb-2">WordPress & Automation Architect</h3>
+      <p class="text-indigo-300 font-semibold mb-6">K21 Academy</p>
+      <ul class="space-y-3 text-slate-300 text-sm">
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Architected scalable WordPress systems for a high-traffic edtech platform — custom plugins, REST APIs, WooCommerce logic, and ACF-powered content structures.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Delivered 800+ Zapier integrations with custom JavaScript and Python code steps, plus AI-powered nodes for lead scoring, data enrichment, and intelligent routing.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Built 200+ Make scenarios and 150+ self-hosted n8n workflows with complex branching, retry logic, and AI integration for real-time data processing.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Integrated 5+ CRM platforms — GoHighLevel, ActiveCampaign, Mailchimp, Infusionsoft (Keap), and LeadSquared — covering full lead lifecycle automation.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Built page layouts with Elementor, Divi, WPBakery, and Beaver Builder, with multi-step form pipelines feeding directly into CRM via webhooks.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Implemented WPFusion & Skool for membership access control and WhatsApp automation via WATI and Interakt for lead routing and instant response.</li>
+        <li class="flex gap-2"><span class="text-indigo-400 mt-0.5">✔</span> Built internal Chrome extensions for QA, form extraction, and CRM validation — secured all pipelines with webhook token validation and API authentication.</li>
+      </ul>
+    </div>
 
-<div>
-<p class="text-slate-400 text-sm font-bold">2020 — 2022</p>
-<h3 class="text-xl font-bold">Bit by Bits</h3>
-<p class="text-slate-400 text-sm">
-Frontend & WordPress development, performance optimization,
-responsive UI systems.
-</p>
-</div>
-</div>
+    <div class="p-8 border border-slate-700 rounded-3xl">
+      <p class="text-slate-400 text-sm font-bold mb-1">2020 — 2022 · SRINAGAR, J&K</p>
+      <h3 class="text-2xl font-bold mb-2">Front-End Web Developer</h3>
+      <p class="text-slate-300 font-semibold mb-6">Bit by Bits</p>
+      <p class="text-slate-400 text-sm">Responsive WordPress websites and layouts using HTML5, CSS3, and page builders. Cross-platform visual asset design and front-end performance optimisation.</p>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- CTA -->
-<footer id="contact" class="bg-indigo-600 py-24 px-6 text-white text-center rounded-t-[3rem]">
-<h2 class="text-4xl font-extrabold mb-6">Let’s automate your business.</h2>
-<p class="text-indigo-100 mb-10 max-w-xl mx-auto">
-Available for WordPress architecture, automation systems & integrations.
-</p>
-<div class="flex justify-center gap-6 text-2xl">
-<a href="mailto:khanmasroof33@gmail.com"><i class="fas fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/khanmasroof/"><i class="fab fa-linkedin"></i></a>
-<a href="tel:+919149605834"><i class="fas fa-phone"></i></a>
+<!-- SKILLS CLOUD -->
+<section class="py-24 px-6 bg-slate-50">
+<div class="max-w-4xl mx-auto text-center">
+  <h2 class="text-3xl font-extrabold mb-4">Full Tech Stack</h2>
+  <p class="text-slate-500 mb-12">Every tool, platform, and language I work with professionally.</p>
+  <div class="flex flex-wrap justify-center gap-2">
+    <span class="tool-tag">WordPress</span><span class="tool-tag">PHP</span><span class="tool-tag">JavaScript</span>
+    <span class="tool-tag">Python</span><span class="tool-tag">React JS</span><span class="tool-tag">HTML5</span>
+    <span class="tool-tag">CSS3</span><span class="tool-tag">REST APIs</span><span class="tool-tag">Elementor</span>
+    <span class="tool-tag">Divi</span><span class="tool-tag">WPBakery</span><span class="tool-tag">Beaver Builder</span>
+    <span class="tool-tag">WooCommerce</span><span class="tool-tag">ACF</span><span class="tool-tag">Gravity Forms</span>
+    <span class="tool-tag">Fluent Forms</span><span class="tool-tag">WPForms</span><span class="tool-tag">Typeform</span>
+    <span class="tool-tag">JotForm</span><span class="tool-tag">Contact Form 7</span><span class="tool-tag">Zapier</span>
+    <span class="tool-tag">Make / Integromat</span><span class="tool-tag">n8n</span><span class="tool-tag">Pabbly Connect</span>
+    <span class="tool-tag">OpenAI</span><span class="tool-tag">Claude AI</span><span class="tool-tag">GoHighLevel</span>
+    <span class="tool-tag">ActiveCampaign</span><span class="tool-tag">Mailchimp</span><span class="tool-tag">Infusionsoft</span>
+    <span class="tool-tag">LeadSquared</span><span class="tool-tag">WPFusion</span><span class="tool-tag">Skool</span>
+    <span class="tool-tag">WATI</span><span class="tool-tag">Interakt</span><span class="tool-tag">2Chats</span>
+    <span class="tool-tag">Chrome Extensions</span><span class="tool-tag">Webhook Security</span><span class="tool-tag">UTM Tracking</span>
+    <span class="tool-tag">Google Analytics</span>
+  </div>
 </div>
-<p class="text-sm text-indigo-200 mt-12">
-© 2025 Khan Masroof • MCA • Srinagar, J&K
+</section>
+
+<!-- CTA / CONTACT -->
+<footer id="contact" class="bg-indigo-600 py-24 px-6 text-white text-center rounded-t-[3rem]">
+<h2 class="text-4xl font-extrabold mb-6">Let's automate your business.</h2>
+<p class="text-indigo-100 mb-10 max-w-xl mx-auto">
+  Available for WordPress architecture, automation systems & integrations. Remote-friendly · Fast delivery · AI-enhanced workflows.
 </p>
+<div class="flex justify-center gap-6 text-2xl mb-10">
+  <a href="mailto:khanmasroof33@gmail.com" class="hover:scale-110 transition" title="Email"><i class="fas fa-envelope"></i></a>
+  <a href="https://www.linkedin.com/in/khanmasroof/" class="hover:scale-110 transition" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <a href="https://khanmasroof.github.io/portfolio/" class="hover:scale-110 transition" title="Portfolio"><i class="fas fa-globe"></i></a>
+  <a href="tel:+919149605834" class="hover:scale-110 transition" title="Phone"><i class="fas fa-phone"></i></a>
+</div>
+<p class="text-sm text-indigo-200">© 2025 Khan Masroof · MCA · WordPress & Automation Architect · Srinagar, J&K</p>
 </footer>
 
 </body>
