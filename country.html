@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Field Widget</title>
+</head>
+<body>
+
+<div class="pf-page">
+<div class="pf-wrap">
+  <div class="phone-field" id="phoneField">
+    <button type="button" class="country-select-btn" id="countryBtn" aria-haspopup="listbox" aria-expanded="false">
+      <span class="country-flag" id="selectedFlag">🌐</span>
+      <span class="country-dial" id="selectedDial">+1</span>
+      <span class="chevron"></span>
+    </button>
+
+    <input type="tel" id="phoneInput" name="phone" class="phone-input" placeholder="(555) 555-0199" inputmode="tel" autocomplete="tel-national">
+
+    <div class="country-panel" id="countryPanel" role="listbox">
+      <input type="text" class="country-search" id="countrySearch" placeholder="Search country or code…">
+      <div class="country-list" id="countryList"></div>
+    </div>
+  </div>
+
+  <input type="hidden" id="dialCode" name="dial_code" value="1">
+  <input type="hidden" id="fullNumber" name="full_number" value="">
+</div>
+</div>
+
+<!-- Required for Jotform Custom Widget (iFrame) integration -->
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-widget.min.js"></script>
+
+<style>
+  html, body{ margin:0; padding:0; }
+
+  .pf-page{
+    display:inline-block;
+  }
+
+  .pf-wrap, .pf-wrap *{ box-sizing:border-box; font-family:inherit; }
+
+  .pf-wrap{ max-width:360px; }
+
+  .phone-field{
+    display:flex !important;
+    align-items:stretch !important;
+    border:1.5px solid #b9b3a8 !important;
+    border-radius:8px !important;
+    background:#fff !important;
+    background-image:none !important;
+    box-shadow:none !important;
+    position:relative;
+  }
+
+  .phone-field:focus-within{
+    border-color:#3454d1;
+    box-shadow:0 0 0 3px #e8ecfb;
+  }
+
+  .country-select-btn{
+    all:unset !important;
+    box-sizing:border-box !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:6px !important;
+    background:transparent !important;
+    background-color:transparent !important;
+    background-image:none !important;
+    border:none !important;
+    border-right:1.5px solid #dcd8d0 !important;
+    padding:0 10px 0 14px !important;
+    cursor:pointer !important;
+    font-size:15px !important;
+    color:#1a1d23 !important;
+    border-radius:8px 0 0 8px !important;
+    white-space:nowrap !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+    text-transform:none !important;
+    letter-spacing:normal !important;
+  }
+
+  .country-select-btn:hover{ background:#f4f2ee; }
+
+  .country-flag{ font-size:18px; line-height:1; }
+
+  .country-dial{
+    font-family:monospace;
+    font-size:14px;
+    color:#77746e;
+  }
+
+  .chevron{
+    width:9px; height:9px;
+    border-right:1.5px solid #77746e;
+    border-bottom:1.5px solid #77746e;
+    transform:rotate(45deg);
+    margin-left:2px;
+    margin-top:-3px;
+  }
+
+  .phone-input{
+    all:unset;
+    box-sizing:border-box;
+    flex:1;
+    padding:13px 14px 13px 10px;
+    font-family:monospace;
+    font-size:15px;
+    letter-spacing:.02em;
+    background:transparent;
+    color:#1a1d23;
+    min-width:0;
+    border-radius:0 8px 8px 0;
+    cursor:text;
+  }
+
+  .phone-input::placeholder{ color:#b3afa6; }
+
+  .country-panel{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    width:300px;
+    max-height:280px;
+    background:#fff;
+    border:1.5px solid #b9b3a8;
+    border-radius:8px;
+    box-shadow:0 12px 28px rgba(20,18,14,.14);
+    z-index:9999;
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .country-panel.open{ display:flex; }
+
+  .country-search{
+    all:unset;
+    box-sizing:border-box;
+    display:block;
+    width:100%;
+    border-bottom:1.5px solid #dcd8d0;
+    padding:11px 14px;
+    font-size:14px;
+    flex-shrink:0;
+    cursor:text;
+  }
+
+  .country-list{ overflow-y:auto; padding:6px; }
+
+  .country-option{
+    all:unset;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding:8px 10px;
+    cursor:pointer;
+    border-radius:7px;
+    font-size:14px;
+    color:#1a1d23;
+  }
+
+  .country-option:hover, .country-option.active{ background:#e8ecfb; }
+
+  .country-option .country-flag{ font-size:17px; }
+  .country-option .opt-name{ flex:1; }
+  .country-option .opt-dial{
+    font-family:monospace;
+    font-size:12.5px;
+    color:#77746e;
+  }
+</style>
+
+<script>
+(function(){
+  var COUNTRIES = [
+    ["US","United States","1"],["CA","Canada","1"],["GB","United Kingdom","44"],
+    ["IN","India","91"],["AU","Australia","61"],["DE","Germany","49"],
+    ["FR","France","33"],["IT","Italy","39"],["ES","Spain","34"],
+    ["BR","Brazil","55"],["MX","Mexico","52"],["JP","Japan","81"],
+    ["CN","China","86"],["KR","South Korea","82"],["RU","Russia","7"],
+    ["ZA","South Africa","27"],["NG","Nigeria","234"],["EG","Egypt","20"],
+    ["AE","United Arab Emirates","971"],["SA","Saudi Arabia","966"],
+    ["PK","Pakistan","92"],["BD","Bangladesh","880"],["ID","Indonesia","62"],
+    ["PH","Philippines","63"],["VN","Vietnam","84"],["TH","Thailand","66"],
+    ["MY","Malaysia","60"],["SG","Singapore","65"],["NL","Netherlands","31"],
+    ["BE","Belgium","32"],["CH","Switzerland","41"],["SE","Sweden","46"],
+    ["NO","Norway","47"],["DK","Denmark","45"],["FI","Finland","358"],
+    ["PL","Poland","48"],["IE","Ireland","353"],["PT","Portugal","351"],
+    ["GR","Greece","30"],["TR","Turkey","90"],["IL","Israel","972"],
+    ["NZ","New Zealand","64"],["AR","Argentina","54"],["CL","Chile","56"],
+    ["CO","Colombia","57"],["PE","Peru","51"],["UA","Ukraine","380"],
+    ["CZ","Czech Republic","420"],["AT","Austria","43"],["HK","Hong Kong","852"],
+    ["TW","Taiwan","886"],["KE","Kenya","254"],["JM","Jamaica","1876"]
+  ].map(function(a){ return { iso2:a[0], name:a[1], dial:a[2] }; });
+
+  function flagEmoji(iso2){
+    var chars = iso2.toUpperCase().split('').map(function(c){
+      return 127397 + c.charCodeAt(0);
+    });
+    return String.fromCodePoint.apply(null, chars);
+  }
+
+  var btn        = document.getElementById('countryBtn');
+  var panel      = document.getElementById('countryPanel');
+  var search     = document.getElementById('countrySearch');
+  var list       = document.getElementById('countryList');
+  var selFlag    = document.getElementById('selectedFlag');
+  var selDial    = document.getElementById('selectedDial');
+  var phoneInput = document.getElementById('phoneInput');
+  var dialHidden = document.getElementById('dialCode');
+  var fullHidden = document.getElementById('fullNumber');
+
+  var current = COUNTRIES[0]; // US default
+
+  function renderList(filter){
+    var f = (filter || "").trim().toLowerCase();
+    list.innerHTML = "";
+    COUNTRIES.filter(function(c){
+      return !f || c.name.toLowerCase().indexOf(f) !== -1 || c.dial.indexOf(f) !== -1;
+    }).forEach(function(c){
+      var optBtn = document.createElement('button');
+      optBtn.type = "button";
+      optBtn.className = "country-option" + (c.iso2 === current.iso2 ? " active" : "");
+      optBtn.setAttribute('role', 'option');
+      optBtn.innerHTML = '<span class="country-flag">' + flagEmoji(c.iso2) + '</span>' +
+                          '<span class="opt-name">' + c.name + '</span>' +
+                          '<span class="opt-dial">+' + c.dial + '</span>';
+      optBtn.addEventListener('click', function(){ selectCountry(c); });
+      list.appendChild(optBtn);
+    });
+  }
+
+  function selectCountry(c){
+    current = c;
+    selFlag.textContent = flagEmoji(c.iso2);
+    selDial.textContent = "+" + c.dial;
+    dialHidden.value = c.dial;
+    closePanel();
+    updateFullNumber();
+    phoneInput.focus();
+  }
+
+  function openPanel(){
+    panel.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    search.value = "";
+    renderList("");
+    setTimeout(function(){ search.focus(); }, 0);
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function(){
+    panel.classList.contains('open') ? closePanel() : openPanel();
+  });
+
+  document.addEventListener('click', function(e){
+    if(!document.getElementById('phoneField').contains(e.target)) closePanel();
+  });
+
+  search.addEventListener('input', function(){ renderList(search.value); });
+  search.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePanel(); });
+
+  function updateFullNumber(){
+    var digits = phoneInput.value.trim();
+    var val = digits ? ("+" + current.dial + " " + digits) : "";
+    fullHidden.value = val;
+    sendToJotform(val);
+  }
+  phoneInput.addEventListener('input', updateFullNumber);
+
+  // ---- Jotform Custom Widget SDK wiring ----
+  function sendToJotform(value){
+    if(window.JFCustomWidget){
+      window.JFCustomWidget.sendData({ value: value });
+    }
+  }
+
+  if(window.JFCustomWidget){
+    window.JFCustomWidget.subscribe('ready', function(){
+      window.JFCustomWidget.requestFrameResize({ height: 340 });
+    });
+    window.JFCustomWidget.subscribe('submit', function(){
+      sendToJotform(fullHidden.value);
+      window.JFCustomWidget.sendSubmit({ value: fullHidden.value, valid: true });
+    });
+  }
+
+  function detectCountry(){
+    var endpoints = [
+      { url: "https://ipapi.co/json/", parse: function(d){ return d && d.country_code; } },
+      { url: "https://get.geojs.io/v1/ip/country.json", parse: function(d){ return d && d.country; } }
+    ];
+
+    function tryEndpoint(i){
+      if(i >= endpoints.length){
+        try{
+          var locale = navigator.language || navigator.userLanguage || "";
+          var iso2 = locale.split('-')[1];
+          var match = iso2 && COUNTRIES.filter(function(c){ return c.iso2 === iso2.toUpperCase(); })[0];
+          if(match) selectCountry(match);
+        }catch(e){}
+        return;
+      }
+      var ep = endpoints[i];
+      fetch(ep.url).then(function(res){
+        if(!res.ok) throw new Error('bad response');
+        return res.json();
+      }).then(function(data){
+        var iso2 = ep.parse(data);
+        var match = iso2 && COUNTRIES.filter(function(c){ return c.iso2 === iso2.toUpperCase(); })[0];
+        if(match){ selectCountry(match); } else { tryEndpoint(i + 1); }
+      }).catch(function(){ tryEndpoint(i + 1); });
+    }
+
+    tryEndpoint(0);
+  }
+
+  selectCountry(current);
+  detectCountry();
+})();
+</script>
+
+</body>
+</html>
