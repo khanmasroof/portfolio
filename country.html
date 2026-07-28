@@ -26,6 +26,8 @@
 
   <input type="hidden" id="dialCode" name="dial_code" value="1">
   <input type="hidden" id="fullNumber" name="full_number" value="">
+
+  <div class="pf-error" id="pfError">Phone number is required</div>
 </div>
 </div>
 
@@ -58,6 +60,19 @@
     border-color:#3454d1;
     box-shadow:0 0 0 3px #e8ecfb;
   }
+
+  .phone-field.pf-invalid{
+    border-color:#c14a3a !important;
+  }
+
+  .pf-error{
+    display:none;
+    color:#c14a3a;
+    font-size:12.5px;
+    margin-top:6px;
+  }
+
+  .pf-error.show{ display:block; }
 
   .country-select-btn{
     all:unset !important;
@@ -268,15 +283,34 @@
   search.addEventListener('input', function(){ renderList(search.value); });
   search.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePanel(); });
 
+  var phoneField  = document.getElementById('phoneField');
+  var errorMsg    = document.getElementById('pfError');
+
   function updateFullNumber(){
     var digits = phoneInput.value.trim();
     var val = digits ? ("+" + current.dial + " " + digits) : "";
     fullHidden.value = val;
     sendToJotform(val);
+    if(digits){ clearError(); }
   }
   phoneInput.addEventListener('input', updateFullNumber);
 
+  function showError(){
+    phoneField.classList.add('pf-invalid');
+    errorMsg.classList.add('show');
+  }
+  function clearError(){
+    phoneField.classList.remove('pf-invalid');
+    errorMsg.classList.remove('show');
+  }
+
+  function isValid(){
+    return phoneInput.value.trim().length > 0;
+  }
+
   // ---- Jotform Custom Widget SDK wiring ----
+  // sendData() tells Jotform what this widget's field value is.
+  // sendSubmit() is required by JFCustomWidget on submit, or the form will hang.
   function sendToJotform(value){
     if(window.JFCustomWidget){
       window.JFCustomWidget.sendData({ value: value });
@@ -284,12 +318,20 @@
   }
 
   if(window.JFCustomWidget){
+    // Auto-resize the iframe to fit the widget's content.
     window.JFCustomWidget.subscribe('ready', function(){
-      window.JFCustomWidget.requestFrameResize({ height: 340 });
+      window.JFCustomWidget.requestFrameResize({ height: 380 });
     });
+    // Jotform calls this when the user submits the form.
+    // Required-field enforcement happens here: if empty, block submit and show an error.
     window.JFCustomWidget.subscribe('submit', function(){
       sendToJotform(fullHidden.value);
-      window.JFCustomWidget.sendSubmit({ value: fullHidden.value, valid: true });
+      if(!isValid()){
+        showError();
+        window.JFCustomWidget.sendSubmit({ value: "", valid: false });
+      }else{
+        window.JFCustomWidget.sendSubmit({ value: fullHidden.value, valid: true });
+      }
     });
   }
 
@@ -301,6 +343,7 @@
 
     function tryEndpoint(i){
       if(i >= endpoints.length){
+        // fallback: browser locale
         try{
           var locale = navigator.language || navigator.userLanguage || "";
           var iso2 = locale.split('-')[1];
