@@ -160,6 +160,24 @@ section{scroll-margin-top:72px}
 .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#FF7A3D,var(--accent))}
 @media (max-width:860px){.auto{grid-template-columns:1fr}}
 
+/* automation platforms */
+.plat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pl{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.pl:hover{border-color:rgba(255,165,82,.35);transform:translateY(-2px)}
+.pl-n{font-size:clamp(34px,3.6vw,44px);font-weight:600;letter-spacing:-.05em;line-height:1;color:var(--accent)}
+.pl h3{font-size:20px;letter-spacing:-.02em;margin-top:6px}
+.pl p{color:var(--muted);font-size:15px;line-height:1.6}
+.auto-foot{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;margin-top:18px}
+.auto-foot > div{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 26px}
+.auto-foot b{display:block;font-weight:500;margin-bottom:12px}
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.inv div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px}
+.inv strong{display:block;font-size:32px;font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--accent)}
+.inv span{display:block;color:var(--muted);font-size:13.5px;margin-top:6px}
+@media (max-width:980px){.plat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:720px){.auto-foot{grid-template-columns:1fr}}
+@media (max-width:460px){.plat{grid-template-columns:1fr}}
+
 /* experience */
 .xp{display:grid;gap:18px}
 .job{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;padding:30px;background:var(--surface);border:1px solid var(--line);border-radius:22px}
@@ -228,6 +246,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <a class="brand" href="#top"><i>KM</i>Khan Masroof</a>
     <ul>
       <li><a href="#work">Work</a></li>
+      <li><a href="#automation">Automation</a></li>
+      <li><a href="#wordpress">WordPress</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
     </ul>
@@ -242,7 +262,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <span class="avail"><b></b>Open to remote roles · Srinagar, India</span>
       <h1>I make business tools <em>talk</em> to each other.</h1>
       <p class="role">Automation Architect &amp; Full-Stack Developer</p>
-      <p class="intro">For three years I have run the automation behind a London edtech company: 1,150+ pipelines, 13 cloud services, custom Claude AI connectors, and the pages and dashboards its sales team uses every day.</p>
+      <p class="intro">For three years I have run the automation behind a London edtech company: 1,150+ automations in Zapier, Make, n8n and Pabbly, 13 cloud services, custom Claude AI connectors, and the WordPress site its customers use every day.</p>
       <div class="cta">
         <a class="btn" href="#work">See my work <svg class="ico"><use href="#i-arrow"/></svg></a>
         <a class="btn ghost" href="#contact">Contact me</a>
@@ -262,8 +282,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="stats">
       <div class="stat"><strong class="tnum">1,150<sup>+</sup></strong><span>automation pipelines in Zapier, Make and n8n</span></div>
       <div class="stat"><strong class="tnum">13</strong><span>services I built, live in production on Railway</span></div>
-      <div class="stat"><strong class="tnum">40<sup>+</sup></strong><span>landing and webinar pages designed and built</span></div>
-      <div class="stat"><strong class="tnum">3<sup>+</sup></strong><span>years delivering remotely for a UK company</span></div>
+      <div class="stat"><strong class="tnum">40<sup>+</sup></strong><span>WordPress pages, themes and plugins</span></div>
+            <div class="stat"><strong class="tnum">6</strong><span>custom Claude AI connectors in TypeScript</span></div>
     </div>
   </div>
 </header>
@@ -274,9 +294,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="head">
       <div>
         <div class="kicker">Selected work</div>
-        <h2>Built for real teams, <em>running</em> today.</h2>
+        <h2>Tools I <em>built</em>.</h2>
       </div>
-      <p>The projects I am proudest of. Every one is in production.</p>
+      <p>Tools I designed and built. Every one is in production.</p>
     </div>
 
     <div class="work">
@@ -301,64 +321,40 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </article>
 
       <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-phone"/></svg>Integration rescue</div>
-        <h3>Recovered 4,659 call records in one day</h3>
-        <p>Our phone provider's CRM connector broke silently and a week of calls never reached the CRM. I shipped a replacement sync and a backfill the same day, with safeguards so no call is ever logged twice.</p>
-        <div class="chips"><span>Node.js</span><span>Webhooks</span><span>LeadSquared API</span><span>Railway</span></div>
-        <div class="metric"><strong class="tnum">1 day</strong><span>from broken to fixed</span></div>
+        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>My own product</div>
+        <h3>Inboxly, a shared WhatsApp inbox for sales teams</h3>
+        <p>Several agents work one WhatsApp number together, with assignment, internal notes, stages and live updates. I designed and built it alone, from the database to the interface.</p>
+        <div class="chips"><span>Next.js 15</span><span>Fastify</span><span>Socket.IO</span><span>BullMQ</span><span>Redis</span><span>MongoDB</span></div>
+        <div class="metric"><strong class="tnum">5</strong><span>services running on Railway</span></div>
       </article>
 
       <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-play"/></svg>Data accuracy</div>
-        <h3>Webinar data sales can trust again</h3>
-        <p>The old automation missed 7 of the 8 people who saw the offer on one webinar. I replaced it with a service that tracks watch time and offer clicks for every attendee and sends them to the CRM.</p>
-        <div class="chips"><span>Headless browser</span><span>Node.js</span><span>CRM sync</span></div>
-        <div class="metric"><strong class="tnum">8 / 8</strong><span>offer viewers now captured, up from 1</span></div>
+        <div class="tag"><svg class="ico"><use href="#i-zap"/></svg>Custom integrations</div>
+        <h3>CRM integrations written in code</h3>
+        <p>When a no-code step is not enough, I write the integration as its own service. Phone calls, meeting bookings and webinar attendance each land on the right lead in the CRM, in real time.</p>
+        <div class="chips"><span>CallHippo</span><span>Dialpad</span><span>Calendly</span><span>EasyWebinar</span><span>Zoom</span><span>LeadSquared</span></div>
+        <div class="metric"><strong class="tnum">7.4k</strong><span>new leads a month flow through them</span></div>
       </article>
 
       <article class="card">
         <div class="tag"><svg class="ico"><use href="#i-grid"/></svg>Sales dashboard</div>
-        <h3>One callback queue</h3>
-        <p>Merges callback requests from every form and webinar into one list. Reps claim a lead, so two people never call the same person.</p>
-        <div class="metric"><strong class="tnum">35–40</strong><span>requests a day</span></div>
+        <h3>Callback queue</h3>
+        <p>Every "please call me" request from forms and webinars in one list. Reps claim a lead with one click.</p>
+        <div class="metric"><strong class="tnum">35 to 40</strong><span>requests a day</span></div>
       </article>
 
       <article class="card">
-        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>Own product</div>
-        <h3>Inboxly</h3>
-        <p>A shared WhatsApp inbox for sales teams, built alone from scratch with Next.js, Fastify, Socket.IO, BullMQ, Redis and MongoDB.</p>
-        <div class="metric"><strong class="tnum">5</strong><span>services, live on Railway</span></div>
+        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>Webinar tool</div>
+        <h3>Webinar Q&amp;A inbox</h3>
+        <p>Collects every question asked in live webinars and groups them by person, so sales sees the full story before calling.</p>
+        <div class="metric"><strong class="tnum">0</strong><span>dependencies, pure Node.js</span></div>
       </article>
 
       <article class="card">
-        <div class="tag"><svg class="ico"><use href="#i-zap"/></svg>Real-time syncs</div>
-        <h3>Four CRM syncs in code</h3>
-        <p>Calls from CallHippo and Dialpad, Calendly bookings and webinar attendance, each written straight to the right lead.</p>
-        <div class="metric"><strong class="tnum">7.4k</strong><span>leads a month flow through them</span></div>
-      </article>
-
-      <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-layout"/></svg>Web design</div>
-        <h3>40+ landing pages for a global AI academy</h3>
-        <p>Course, webinar and lead magnet pages plus a redesigned mega menu, all from one design system. Every page is tested on desktop, tablet and phone before launch.</p>
-        <div class="links">
-          <a href="https://k21academy.com/agenticai-fp/">Agentic AI <svg class="ico"><use href="#i-ext"/></svg></a>
-          <a href="https://k21academy.com/aiarchitect-fp/">AI Architect <svg class="ico"><use href="#i-ext"/></svg></a>
-          <a href="https://k21academy.com/claudeai-fp/">Claude AI <svg class="ico"><use href="#i-ext"/></svg></a>
-          <a href="https://k21academy.com/azureai-fp/">Azure AI <svg class="ico"><use href="#i-ext"/></svg></a>
-          <a href="https://k21academy.com/awsai-fp/">AWS AI <svg class="ico"><use href="#i-ext"/></svg></a>
-        </div>
-      </article>
-
-      <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-plug"/></svg>WordPress &amp; extensions</div>
-        <h3>What powers the website</h3>
-        <ul class="list">
-          <li><svg class="ico"><use href="#i-wp"/></svg><span><b>Custom themes and plugins</b> in PHP, with ACF and WooCommerce checkout changes</span></li>
-          <li><svg class="ico"><use href="#i-bot"/></svg><span><b>Website AI agent</b> that answers visitors and captures leads</span></li>
-          <li><svg class="ico"><use href="#i-code"/></svg><span><b>Chrome extensions</b> for QA and CRM field checks</span></li>
-          <li><svg class="ico"><use href="#i-chat"/></svg><span><b>WhatsApp automation</b> with WATI and Interakt</span></li>
-        </ul>
+        <div class="tag"><svg class="ico"><use href="#i-db"/></svg>Marketing dashboard</div>
+        <h3>Lead source dashboard</h3>
+        <p>Shows which channel every new lead came from, using UTM data captured on the website.</p>
+        <div class="metric"><strong class="tnum">100</strong><span>new leads a day, attributed</span></div>
       </article>
     </div>
   </div>
@@ -366,18 +362,75 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section class="sec" id="automation">
   <div class="wrap">
-    <div class="auto">
+    <div class="head">
       <div>
-        <div class="kicker">Automation at scale</div>
-        <h3 style="margin-top:12px"><span class="tnum">1,150+</span> pipelines, <em>one</em> person.</h3>
-        <p>Lead capture, tagging, nurture sequences, enrolments and WhatsApp follow-ups across five CRM platforms. When a no-code tool hits its limit, I write the service in code.</p>
+        <div class="kicker">Automation</div>
+        <h2><span class="tnum">1,150+</span> automations, <em>every</em> major platform.</h2>
       </div>
-      <div class="bars" role="img" aria-label="Zapier 800+, Make 200+, n8n 150+">
-        <div><div class="bar-top"><b>Zapier</b><span>800+</span></div><div class="track"><i style="width:100%"></i></div></div>
-        <div><div class="bar-top"><b>Make</b><span>200+</span></div><div class="track"><i style="width:25%"></i></div></div>
-        <div><div class="bar-top"><b>n8n</b><span>150+</span></div><div class="track"><i style="width:19%"></i></div></div>
-        <div class="chips" style="margin-top:6px"><span>GoHighLevel</span><span>ActiveCampaign</span><span>Mailchimp</span><span>Keap</span><span>LeadSquared</span></div>
+      <p>Lead capture, tagging, scoring, nurture sequences, payments, enrolments and WhatsApp follow-ups, across five CRMs.</p>
+    </div>
+    <div class="plat">
+      <div class="pl"><span class="pl-n tnum">800+</span><h3>Zapier</h3><p>Custom Zaps with JavaScript and Python code steps, webhooks and AI routing.</p></div>
+      <div class="pl"><span class="pl-n tnum">200+</span><h3>Make</h3><p>Multi-branch scenarios with routers, iterators and error handling.</p></div>
+      <div class="pl"><span class="pl-n tnum">150+</span><h3>n8n</h3><p>Self-hosted workflows with custom code nodes and AI steps.</p></div>
+      <div class="pl"><span class="pl-n">Pabbly</span><h3>Pabbly Connect</h3><p>Lightweight workflows for forms, payments and email tools.</p></div>
+    </div>
+    <div class="auto-foot">
+      <div><b>Connected tools</b><div class="chips"><span>LeadSquared</span><span>GoHighLevel</span><span>ActiveCampaign</span><span>Mailchimp</span><span>Keap</span><span>WooCommerce</span><span>Fluent Forms</span><span>Calendly</span><span>WATI</span><span>Interakt</span><span>Skool</span></div></div>
+      <div><b>AI in the flow</b><div class="chips"><span>OpenAI API</span><span>Claude API</span><span>Structured JSON output</span><span>Lead routing</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="wordpress">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="kicker">WordPress</div>
+        <h2>Custom themes, plugins <em>and</em> pages.</h2>
       </div>
+      <p>I run the k21academy.com WordPress stack end to end, from PHP to the pages visitors land on.</p>
+    </div>
+    <div class="work">
+      <article class="card">
+        <div class="tag"><svg class="ico"><use href="#i-code"/></svg>Theme development</div>
+        <h3>Child themes in PHP</h3>
+        <p>A custom child theme on Hello Elementor, with my own templates, functions and scripts, such as UTM capture that tags every lead with its source.</p>
+        <div class="chips"><span>PHP</span><span>Child themes</span><span>WordPress hooks</span><span>JavaScript</span></div>
+      </article>
+      <article class="card">
+        <div class="tag"><svg class="ico"><use href="#i-plug"/></svg>Plugin development</div>
+        <h3>Custom Fluent Forms plugins</h3>
+        <p>Plugins that extend Fluent Forms, including WhatsApp OTP verification and a REST API that feeds form data to the sales dashboard.</p>
+        <div class="chips"><span>Fluent Forms Pro</span><span>REST API</span><span>WATI</span><span>PHP</span></div>
+      </article>
+      <article class="card">
+        <div class="tag"><svg class="ico"><use href="#i-wp"/></svg>Store and site</div>
+        <h3>WooCommerce, ACF and speed</h3>
+        <p>Checkout customisation, ACF field architecture, caching and SEO setup, plus Chrome extensions for QA.</p>
+        <div class="chips"><span>WooCommerce</span><span>ACF</span><span>WP Rocket</span><span>Rank Math</span></div>
+      </article>
+      <article class="card full wp-pages">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="tag"><svg class="ico"><use href="#i-layout"/></svg>Web design</div>
+          <h3>40+ landing pages for a global AI academy</h3>
+          <p>Course pages, webinar registration and replay pages, lead magnets and a redesigned mega menu, built in Elementor from one design system. Every page is tested on desktop, tablet and phone before launch.</p>
+        </div>
+        <div>
+          <div class="inv">
+            <div><strong class="tnum">21</strong><span>course pages</span></div>
+            <div><strong class="tnum">12</strong><span>lead magnets</span></div>
+            <div><strong class="tnum">7+</strong><span>webinar pages</span></div>
+          </div>
+          <div class="links" style="border-top:0;padding-top:16px">
+            <a href="https://k21academy.com/agenticai-fp/">Agentic AI <svg class="ico"><use href="#i-ext"/></svg></a>
+            <a href="https://k21academy.com/aiarchitect-fp/">AI Architect <svg class="ico"><use href="#i-ext"/></svg></a>
+            <a href="https://k21academy.com/claudeai-fp/">Claude AI <svg class="ico"><use href="#i-ext"/></svg></a>
+            <a href="https://k21academy.com/azureai-fp/">Azure AI <svg class="ico"><use href="#i-ext"/></svg></a>
+            <a href="https://k21academy.com/awsai-fp/">AWS AI <svg class="ico"><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -397,10 +450,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <h3>WordPress &amp; Automation Architect</h3>
           <p class="org">K21 Academy, London</p>
           <ul>
-            <li>Built and run 1,150+ automation pipelines, with AI routing steps using the OpenAI and Claude APIs.</li>
+            <li>Built and run 1,150+ automations in Zapier, Make, n8n and Pabbly Connect, with AI routing steps using the OpenAI and Claude APIs.</li>
             <li>Built six custom Claude MCP connectors and 13 production services on Railway.</li>
             <li>Own CRM workflows across GoHighLevel, ActiveCampaign, Mailchimp, Keap and LeadSquared.</li>
-            <li>Deliver WordPress end to end: themes, plugins, ACF, WooCommerce and Chrome extensions for QA.</li>
+            <li>Deliver WordPress end to end: child themes and custom plugins in PHP, Fluent Forms extensions, ACF, WooCommerce and 40+ Elementor pages.</li>
           </ul>
         </div>
       </div>
@@ -431,9 +484,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </div>
     </div>
     <div class="skills">
-      <div class="sk"><h3><svg class="ico"><use href="#i-zap"/></svg>Automation &amp; AI</h3><div class="chips"><span>Zapier</span><span>Make</span><span>n8n</span><span>Claude API</span><span>MCP servers</span><span>OpenAI API</span><span>Webhooks</span></div></div>
+      <div class="sk"><h3><svg class="ico"><use href="#i-zap"/></svg>Automation &amp; AI</h3><div class="chips"><span>Zapier</span><span>Make</span><span>n8n</span><span>Pabbly Connect</span><span>Claude API</span><span>MCP servers</span><span>OpenAI API</span><span>Webhooks</span></div></div>
       <div class="sk"><h3><svg class="ico"><use href="#i-code"/></svg>Development</h3><div class="chips"><span>JavaScript</span><span>TypeScript</span><span>Node.js</span><span>React</span><span>Next.js</span><span>PHP</span><span>Python</span></div></div>
-      <div class="sk"><h3><svg class="ico"><use href="#i-wp"/></svg>WordPress</h3><div class="chips"><span>Custom themes</span><span>Plugins</span><span>ACF</span><span>WooCommerce</span><span>Elementor</span><span>Divi</span></div></div>
+      <div class="sk"><h3><svg class="ico"><use href="#i-wp"/></svg>WordPress</h3><div class="chips"><span>Child themes</span><span>Custom plugins</span><span>PHP</span><span>Fluent Forms</span><span>ACF</span><span>WooCommerce</span><span>Elementor</span><span>Divi</span></div></div>
       <div class="sk"><h3><svg class="ico"><use href="#i-db"/></svg>CRM &amp; Cloud</h3><div class="chips"><span>LeadSquared</span><span>GoHighLevel</span><span>ActiveCampaign</span><span>Keap</span><span>WATI</span><span>Railway</span></div></div>
     </div>
   </div>
