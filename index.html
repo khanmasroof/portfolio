@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Khan Masroof Portfolio</title>
-<meta name="description" content="Khan Masroof, automation architect and full-stack developer. 1,150+ automation pipelines, 13 production services and six Claude MCP connectors for a London edtech company.">
+<meta name="description" content="Khan Masroof, automation architect and full-stack developer. 1,150+ automations, 50+ custom connectors, 20+ production services and 800+ WordPress landing pages for a London edtech company.">
 <link rel="canonical" href="https://khanmasroof.github.io/portfolio/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://khanmasroof.github.io/portfolio/">
@@ -210,6 +210,32 @@ section{scroll-margin-top:72px}
 @media (max-width:720px){.auto-foot{grid-template-columns:1fr}}
 @media (max-width:460px){.plat{grid-template-columns:1fr}}
 
+/* live flow */
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3vw,32px);position:relative;overflow:hidden}
+.flow::before{content:"";position:absolute;inset:-40% 30% auto 30%;height:300px;background:radial-gradient(closest-side,rgba(255,165,82,.10),transparent);pointer-events:none}
+.flow-live{position:relative;display:flex;align-items:center;gap:12px;font:500 14px/1.5 var(--mono);color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:24px;min-height:50px}
+.flow-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex:none;box-shadow:0 0 0 4px rgba(74,222,128,.15);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.35}}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px;position:relative}
+.stage{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:20px 18px;display:flex;flex-direction:column;gap:10px;transition:border-color .35s,box-shadow .35s,transform .35s}
+.stage > .ico{width:26px;height:26px;color:var(--accent)}
+.st-n{position:absolute;top:16px;right:16px;font:500 11.5px var(--mono);color:var(--muted)}
+.stage h3{font-size:18px;letter-spacing:-.02em}
+.stage p{color:var(--muted);font-size:14px;line-height:1.5}
+.stage .chips{margin-top:auto}
+.stage .chips span{font-size:11px;padding:4px 8px}
+.stage.on{border-color:rgba(255,165,82,.6);box-shadow:0 0 0 4px rgba(255,165,82,.08),0 20px 40px -20px rgba(255,165,82,.35);transform:translateY(-3px)}
+.stage:not(:last-child)::after{content:"";position:absolute;top:50%;right:-28px;width:28px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,165,82,.55) 0 6px,transparent 6px 11px);background-size:22px 2px;animation:dash 1s linear infinite}
+@keyframes dash{to{background-position:22px 0}}
+@keyframes dashv{to{background-position:0 22px}}
+@media (max-width:1060px){
+  .stages{grid-template-columns:1fr;gap:26px}
+  .stage{display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:14px;row-gap:6px;align-items:start}
+  .stage > .ico{grid-row:span 3}
+  .stage .chips{margin-top:4px}
+  .stage:not(:last-child)::after{top:auto;bottom:-26px;right:auto;left:32px;width:2px;height:26px;background:repeating-linear-gradient(180deg,rgba(255,165,82,.55) 0 6px,transparent 6px 11px);background-size:2px 22px;animation:dashv 1s linear infinite}
+}
+
 /* experience */
 .xp{display:grid;gap:18px}
 .job{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;padding:30px;background:var(--surface);border:1px solid var(--line);border-radius:22px}
@@ -277,9 +303,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <a class="brand" href="#top"><i>KM</i>Khan Masroof</a>
     <ul>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#flow">Live flow</a></li>
       <li><a href="#automation">Automation</a></li>
       <li><a href="#wordpress">WordPress</a></li>
+      <li><a href="#work">Tools</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
     </ul>
@@ -294,9 +321,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <span class="avail"><b></b>Open to remote roles · Srinagar, India</span>
       <h1>I make business tools <em>talk</em> to each other.</h1>
       <p class="role">Automation Architect &amp; Full-Stack Developer</p>
-      <p class="intro">For three years I have run the automation behind a London edtech company: 1,150+ automations in Zapier, Make, n8n and Pabbly, 13 cloud services, custom Claude AI connectors, and the WordPress site its customers use every day.</p>
+      <p class="intro">For three years I have run the automation behind a London edtech company: 1,150+ automations in Zapier, Make, n8n and Pabbly, 50+ custom connectors, 20+ cloud services, and a WordPress site with 800+ landing pages.</p>
       <div class="cta">
-        <a class="btn" href="#work">See my work <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#flow">See how it works <svg class="ico"><use href="#i-arrow"/></svg></a>
         <a class="btn ghost" href="#contact">Contact me</a>
       </div>
     </div>
@@ -305,89 +332,63 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <img src="photo.jpg" alt="Khan Masroof" onerror="this.remove();document.getElementById('fb').hidden=false">
         <span class="mono-fb" id="fb" hidden>KM</span>
       </div>
-      <div class="float f1"><svg class="ico"><use href="#i-zap"/></svg><div><strong class="tnum">1,150+</strong><br><span>automations live</span></div></div>
-      <div class="float f2"><svg class="ico"><use href="#i-bot"/></svg><div><strong>Claude MCP</strong><br><span>6 connectors built</span></div></div>
     </div>
   </div>
 
   <div class="wrap" style="position:relative;z-index:1;margin-top:clamp(56px,7vw,88px)">
     <div class="stats">
-      <div class="stat"><strong class="tnum">1,150<sup>+</sup></strong><span>automation pipelines in Zapier, Make and n8n</span></div>
-      <div class="stat"><strong class="tnum">13</strong><span>services I built, live in production on Railway</span></div>
-      <div class="stat"><strong class="tnum">40<sup>+</sup></strong><span>WordPress pages, themes and plugins</span></div>
-            <div class="stat"><strong class="tnum">6</strong><span>custom Claude AI connectors in TypeScript</span></div>
+      <div class="stat"><strong class="tnum">1,150<sup>+</sup></strong><span>automations in Zapier, Make, n8n and Pabbly</span></div>
+      <div class="stat"><strong class="tnum">800<sup>+</sup></strong><span>WordPress landing pages designed and built</span></div>
+      <div class="stat"><strong class="tnum">50<sup>+</sup></strong><span>custom connectors and integrations</span></div>
+            <div class="stat"><strong class="tnum">20<sup>+</sup></strong><span>services I built, live in production on Railway</span></div>
     </div>
   </div>
 </header>
 
 <main>
-<section class="sec" id="work">
+<section class="sec" id="flow">
   <div class="wrap">
     <div class="head">
       <div>
-        <div class="kicker">Selected work</div>
-        <h2>Tools I <em>built</em>.</h2>
+        <div class="kicker">Live flow</div>
+        <h2>From first click to <em>closed</em> sale.</h2>
       </div>
-      <p>Tools I designed and built. Every one is in production.</p>
+      <p>How a visitor moves through the systems I built. Every step below is WordPress or automation work of mine.</p>
     </div>
-
-    <div class="work">
-      <article class="card full">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="tag"><svg class="ico"><use href="#i-bot"/></svg>AI integration</div>
-          <h3>Claude connectors that answer questions from live company data.</h3>
-          <p>I built six MCP servers in TypeScript and Node.js. The marketing and sales teams ask Claude in plain English and get answers from the CRM, Google Analytics and ad accounts, without exporting a single spreadsheet.</p>
-          <div class="servers">
-            <span><b></b>LeadSquared CRM</span><span><b></b>Google Analytics 4</span><span><b></b>Google Ads</span>
-            <span><b></b>Keap</span><span><b></b>WATI WhatsApp</span><span><b></b>EasyWebinar</span>
-          </div>
-        </div>
-        <div class="chat" aria-label="Example conversation with Claude using the connectors">
-          <div class="msg u">How many leads came from LinkedIn this week, and how many booked a call?</div>
-          <div class="tool"><i></i>leadsquared.search_leads · ga4.traffic_sources</div>
-          <div class="msg a">LinkedIn brought 142 new leads this week, up 18% on last week. 23 of them booked a career call.
-            <div class="mini"><div><b class="tnum">142</b><small>leads</small></div><div><b class="tnum">+18%</b><small>vs last week</small></div><div><b class="tnum">23</b><small>calls booked</small></div></div>
-          </div>
-          <div class="tool" style="justify-content:flex-end">Example conversation</div>
-        </div>
-      </article>
-
-      <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>My own product</div>
-        <h3>Inboxly, a shared WhatsApp inbox for sales teams</h3>
-        <p>Several agents work one WhatsApp number together, with assignment, internal notes, stages and live updates. I designed and built it alone, from the database to the interface.</p>
-        <div class="chips"><span>Next.js 15</span><span>Fastify</span><span>Socket.IO</span><span>BullMQ</span><span>Redis</span><span>MongoDB</span></div>
-        <div class="metric"><strong class="tnum">5</strong><span>services running on Railway</span></div>
-      </article>
-
-      <article class="card wide">
-        <div class="tag"><svg class="ico"><use href="#i-zap"/></svg>Custom integrations</div>
-        <h3>CRM integrations written in code</h3>
-        <p>When a no-code step is not enough, I write the integration as its own service. Phone calls, meeting bookings and webinar attendance each land on the right lead in the CRM, in real time.</p>
-        <div class="chips"><span>CallHippo</span><span>Dialpad</span><span>Calendly</span><span>EasyWebinar</span><span>Zoom</span><span>LeadSquared</span></div>
-        <div class="metric"><strong class="tnum">7.4k</strong><span>new leads a month flow through them</span></div>
-      </article>
-
-      <article class="card">
-        <div class="tag"><svg class="ico"><use href="#i-grid"/></svg>Sales dashboard</div>
-        <h3>Callback queue</h3>
-        <p>Every "please call me" request from forms and webinars in one list, fed by my Fluent Forms plugin. Reps claim a lead with one click.</p>
-        <div class="metric"><strong class="tnum">35 to 40</strong><span>requests a day</span></div>
-      </article>
-
-      <article class="card">
-        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>Webinar tool</div>
-        <h3>Webinar Q&amp;A inbox</h3>
-        <p>Collects every question asked in live webinars and groups them by person, so sales sees the full story before calling.</p>
-        <div class="metric"><strong class="tnum">0</strong><span>dependencies, pure Node.js</span></div>
-      </article>
-
-      <article class="card">
-        <div class="tag"><svg class="ico"><use href="#i-db"/></svg>Marketing dashboard</div>
-        <h3>Lead source dashboard</h3>
-        <p>Shows which channel every new lead came from, using UTM data captured on the website.</p>
-        <div class="metric"><strong class="tnum">100</strong><span>new leads a day, attributed</span></div>
-      </article>
+    <div class="flow" id="flowbox">
+      <div class="flow-live" aria-live="polite"><span class="flow-dot"></span><span id="flow-text">A visitor lands on a course page from a LinkedIn ad. The child theme saves the UTM source.</span></div>
+      <ol class="stages">
+        <li class="stage" data-say="A visitor lands on a course page from a LinkedIn ad. The child theme saves the UTM source.">
+          <span class="st-n">01</span><svg class="ico"><use href="#i-wp"/></svg>
+          <h3>WordPress site</h3>
+          <p>800+ landing pages on a custom child theme</p>
+          <div class="chips"><span>Elementor</span><span>PHP</span><span>UTM capture</span></div>
+        </li>
+        <li class="stage" data-say="They fill in the Fluent Forms form. My plugin verifies their phone with a WhatsApp OTP.">
+          <span class="st-n">02</span><svg class="ico"><use href="#i-plug"/></svg>
+          <h3>Capture</h3>
+          <p>Forms, webinars and bookings, verified at the source</p>
+          <div class="chips"><span>Fluent Forms</span><span>WATI OTP</span><span>EasyWebinar</span><span>Calendly</span></div>
+        </li>
+        <li class="stage" data-say="An automation tags the lead, scores it and starts the right nurture sequence.">
+          <span class="st-n">03</span><svg class="ico"><use href="#i-zap"/></svg>
+          <h3>Automation</h3>
+          <p>1,150+ workflows and 20+ custom services</p>
+          <div class="chips"><span>Zapier</span><span>Make</span><span>n8n</span><span>Pabbly</span><span>Railway</span></div>
+        </li>
+        <li class="stage" data-say="The lead lands in the CRM with its source, webinar watch time and the right owner.">
+          <span class="st-n">04</span><svg class="ico"><use href="#i-db"/></svg>
+          <h3>CRM</h3>
+          <p>One complete record per lead</p>
+          <div class="chips"><span>LeadSquared</span><span>GoHighLevel</span><span>ActiveCampaign</span><span>Keap</span></div>
+        </li>
+        <li class="stage" data-say="Sales gets a WhatsApp-ready lead, and managers ask Claude how the campaign is doing.">
+          <span class="st-n">05</span><svg class="ico"><use href="#i-bot"/></svg>
+          <h3>Team and AI</h3>
+          <p>Sales follow-up, WhatsApp and Claude answers</p>
+          <div class="chips"><span>WATI</span><span>Claude MCP</span><span>Dashboards</span></div>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
@@ -445,14 +446,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <article class="card full wp-pages">
         <div style="display:flex;flex-direction:column;gap:14px">
           <div class="tag"><svg class="ico"><use href="#i-layout"/></svg>Web design</div>
-          <h3>40+ landing pages for a global AI academy</h3>
-          <p>Course pages, webinar registration and replay pages, lead magnets and a redesigned mega menu, built in Elementor from one design system. Every page is tested on desktop, tablet and phone before launch.</p>
+          <h3>800+ landing pages for a global AI academy</h3>
+          <p>Course pages, webinar registration and replay pages, lead magnets, thank-you pages and a redesigned mega menu, built in Elementor from one design system. Every page is tested on desktop, tablet and phone before launch.</p>
         </div>
         <div>
           <div class="inv">
-            <div><strong class="tnum">21</strong><span>course pages</span></div>
-            <div><strong class="tnum">12</strong><span>lead magnets</span></div>
-            <div><strong class="tnum">7+</strong><span>webinar pages</span></div>
+            <div><strong class="tnum">800+</strong><span>pages built</span></div>
+            <div><strong class="tnum">3</strong><span>screen sizes tested per page</span></div>
+            <div><strong>1</strong><span>shared design system</span></div>
           </div>
           <div class="links" style="border-top:0;padding-top:16px">
             <a href="https://k21academy.com/agenticai-fp/">Agentic AI <svg class="ico"><use href="#i-ext"/></svg></a>
@@ -466,6 +467,76 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </div>
 </section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="kicker">Selected work</div>
+        <h2>More tools I <em>built</em>.</h2>
+      </div>
+      <p>Tools I designed and built. Every one is in production.</p>
+    </div>
+
+    <div class="work">
+      <article class="card full">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="tag"><svg class="ico"><use href="#i-bot"/></svg>AI integration</div>
+          <h3>Claude connectors that answer questions from live company data.</h3>
+          <p>Among my 50+ custom connectors are MCP servers in TypeScript and Node.js. The marketing and sales teams ask Claude in plain English and get answers from the CRM, Google Analytics and ad accounts, without exporting a single spreadsheet.</p>
+          <div class="servers">
+            <span><b></b>LeadSquared CRM</span><span><b></b>Google Analytics 4</span><span><b></b>Google Ads</span>
+            <span><b></b>Keap</span><span><b></b>WATI WhatsApp</span><span><b></b>EasyWebinar</span>
+          </div>
+        </div>
+        <div class="chat" aria-label="Example conversation with Claude using the connectors">
+          <div class="msg u">How many leads came from LinkedIn this week, and how many booked a call?</div>
+          <div class="tool"><i></i>leadsquared.search_leads · ga4.traffic_sources</div>
+          <div class="msg a">LinkedIn brought 142 new leads this week, up 18% on last week. 23 of them booked a career call.
+            <div class="mini"><div><b class="tnum">142</b><small>leads</small></div><div><b class="tnum">+18%</b><small>vs last week</small></div><div><b class="tnum">23</b><small>calls booked</small></div></div>
+          </div>
+          <div class="tool" style="justify-content:flex-end">Example conversation</div>
+        </div>
+      </article>
+
+      <article class="card wide">
+        <div class="tag"><svg class="ico"><use href="#i-chat"/></svg>My own product</div>
+        <h3>Inboxly, a shared WhatsApp inbox for sales teams</h3>
+        <p>Several agents work one WhatsApp number together, with assignment, internal notes, stages and live updates. I designed and built it alone, from the database to the interface.</p>
+        <div class="chips"><span>Next.js 15</span><span>Fastify</span><span>Socket.IO</span><span>BullMQ</span><span>Redis</span><span>MongoDB</span></div>
+        <div class="metric"><strong class="tnum">5</strong><span>services running on Railway</span></div>
+      </article>
+
+      <article class="card wide">
+        <div class="tag"><svg class="ico"><use href="#i-zap"/></svg>Custom integrations</div>
+        <h3>CRM integrations written in code</h3>
+        <p>When a no-code step is not enough, I write the integration as its own service. Phone calls, meeting bookings and webinar attendance each land on the right lead in the CRM, in real time.</p>
+        <div class="chips"><span>CallHippo</span><span>Dialpad</span><span>Calendly</span><span>EasyWebinar</span><span>Zoom</span><span>LeadSquared</span></div>
+        <div class="metric"><strong class="tnum">7.4k</strong><span>new leads a month flow through them</span></div>
+      </article>
+
+      <article class="card wide">
+        <div class="tag"><svg class="ico"><use href="#i-play"/></svg>Webinar integration</div>
+        <h3>EasyWebinar to LeadSquared</h3>
+        <p>Every webinar registrant becomes a lead, and their attendance, watch time and offer clicks land on that lead automatically. Sales calls the most engaged people first.</p>
+        <div class="chips"><span>EasyWebinar</span><span>LeadSquared</span><span>Node.js</span><span>Railway</span></div>
+        <div class="metric"><strong>Every</strong><span>registrant and session, tracked on the lead</span></div>
+      </article>
+
+      <article class="card wide">
+        <div class="tag"><svg class="ico"><use href="#i-db"/></svg>Marketing dashboard</div>
+        <h3>Lead source dashboard</h3>
+        <p>Shows which channel every new lead came from, using the UTM data my child theme captures on the website.</p>
+        <div class="metric"><strong class="tnum">100</strong><span>new leads a day, attributed</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
 <section class="sec" id="experience">
   <div class="wrap">
@@ -483,9 +554,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <p class="org">K21 Academy, London</p>
           <ul>
             <li>Built and run 1,150+ automations in Zapier, Make, n8n and Pabbly Connect, with AI routing steps using the OpenAI and Claude APIs.</li>
-            <li>Built six custom Claude MCP connectors and 13 production services on Railway.</li>
+            <li>Built 50+ custom connectors and integrations, including Claude MCP servers and an EasyWebinar to LeadSquared integration, and 20+ production services on Railway.</li>
             <li>Own CRM workflows across GoHighLevel, ActiveCampaign, Mailchimp, Keap and LeadSquared.</li>
-            <li>Deliver WordPress end to end: child themes and custom plugins in PHP, Fluent Forms extensions, ACF, WooCommerce and 40+ Elementor pages.</li>
+            <li>Deliver WordPress end to end: child themes and custom plugins in PHP, Fluent Forms extensions, ACF, WooCommerce and 800+ Elementor landing pages.</li>
           </ul>
         </div>
       </div>
@@ -554,6 +625,17 @@ document.getElementById("copy").addEventListener("click", async function () {
   }
   setTimeout(() => { label.textContent = "Copy"; label.classList.remove("copied"); }, 2200);
 });
+(function () {
+  const stages = [...document.querySelectorAll(".stage")];
+  const text = document.getElementById("flow-text");
+  if (!stages.length) return;
+  let i = 0;
+  const show = n => { stages.forEach((s, k) => s.classList.toggle("on", k === n)); text.textContent = stages[n].dataset.say; };
+  show(0);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let timer = setInterval(() => { i = (i + 1) % stages.length; show(i); }, 2600);
+  stages.forEach((s, k) => s.addEventListener("mouseenter", () => { clearInterval(timer); i = k; show(k); timer = setInterval(() => { i = (i + 1) % stages.length; show(i); }, 2600); }));
+})();
 </script>
 </body>
 </html>
